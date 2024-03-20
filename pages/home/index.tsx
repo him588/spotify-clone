@@ -1,17 +1,13 @@
-"use client";
 import { Homeicon, Searchicon } from "@/components/icon";
 import Myplaylist from "./myplaylist";
 import { useState } from "react";
 import spotifyApi from "@/components/lib/spotify";
-import { useSession } from "next-auth/react";
 // import { CustomUser } from "@/types/type";
 
 export default function Home() {
   const [Increase, setIncrease] = useState(false);
 
 
-  const {data:session}=useSession()
-  console.log(session?.user?.email)
 
   return (
     <div className={`" min-h-auto h-screen w-full bg-[black] p-2  `}>
