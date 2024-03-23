@@ -1,16 +1,21 @@
 import { Homeicon, Searchicon } from "@/components/icon";
+import { useEffect } from "react";
 import Myplaylist from "./myplaylist";
 import { useState } from "react";
 import spotifyApi from "@/components/lib/spotify";
+import Sidepage from "./sidepage";
+import { useSession } from "next-auth/react";
 // import { CustomUser } from "@/types/type";
 
 export default function Home() {
   const [Increase, setIncrease] = useState(false);
+  const {data:session,status}=useSession()
+  
 
 
 
   return (
-    <div className={`" min-h-auto h-screen w-full bg-[black] p-2  `}>
+    <div className={`" min-h-auto h-screen w-full flex  gap-2 bg-[black] p-2  `}>
       <div
         className={`" h-full  flex flex-col gap-2 transition-all duration-150 ${
           Increase ? "w-[55%] " : "w-[23%]"
@@ -29,6 +34,9 @@ export default function Home() {
         <div className=" h-[calc(100%-120px)] w-full bg-[#121212] rounded-md">
           <Myplaylist Increase={Increase} setIncrease={setIncrease} />
         </div>
+      </div>
+      <div className={`h-full flex flex-col transition-all duration-150 ${Increase?"w-[45%]":"w-[77%]"}`}>
+        <Sidepage/>
       </div>
     </div>
   );

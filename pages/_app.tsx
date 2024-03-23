@@ -4,7 +4,6 @@ import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { session, ...restPageProps } = pageProps;
-  
   return (
     <SessionProvider session={session}>
       <Component {...restPageProps} />

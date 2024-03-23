@@ -1,7 +1,26 @@
 import SpotifyProvider from "next-auth/providers/spotify";
 import nextAuth, { NextAuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
-import spotifyApi, { LOGIN_URL } from "@/components/lib/spotify";
+import NextAuth from "next-auth/next";
+
+const scopes = [
+  "user-read-email",
+  "playlist-read-private",
+  "playlist-read-collaborative",
+  "user-read-currently-playing",
+  "user-modify-playback-state",
+  "user-modify-playback-state",
+  "user-read-currently-playing",
+  "user-read-recently-played",
+  "streaming",
+  "user-follow-read"
+].join(",")
+
+const params = {
+  scope: scopes
+}
+
+const LOGIN_URL = "https://accounts.spotify.com/authorize?" + new URLSearchParams(params).toString();
 
 
 
@@ -40,8 +59,8 @@ const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     SpotifyProvider({
-      clientId:process.env.NEXT_PUBLIC_CLIENT_ID!,
-      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET!,
+      clientId:process.env.SPOTIFY_CLIENT_ID!,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
       authorization:LOGIN_URL,
     }),
   ],
@@ -52,6 +71,8 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, account,user }) {
       // Persist the OAuth access_token to the token right after signin
+      console.log({account})
+      console.log([user])
       if (account&&user) {
         
         return {...token,accessToken:account.access_token,refreshToken:account.refresh_token,username:account.providerAccountId,accessTokenExpire:account.expires_at ? account.expires_at * 1000 : 0};
@@ -66,8 +87,10 @@ const authOptions: NextAuthOptions = {
       return await refreshAccessToken(token);
     },
     async session({ session, token }) {
+      console.log({token})
       
       const new_session = { ...session, accessToken: token.accessToken,refreshToken:token.refreshToken,username:token.username };
+      console.log(new_session)
       return new_session;
     },
   },
