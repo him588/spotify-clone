@@ -5,7 +5,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className=' h-[20vh] w-full flex flex-col gap-6'>
+    <div className='h-[10vh] w-full flex flex-col gap-6  '>
         <div className=' flex justify-between'>
             <div className=' flex gap-2'>
                 <div className=' bg-[#050708] h-[35px] w-[35px] rounded-full flex items-center justify-center cursor-pointer'>
@@ -24,11 +24,7 @@ function Header() {
                 </div>
             </div>
         </div>
-        <div className=' flex gap-2'>
-            <Button name='All'/>
-            <Button name='Music'/>
-            <Button name='Podcast'/>
-        </div>
+        
       
     </div>
   )

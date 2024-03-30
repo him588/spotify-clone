@@ -1,2 +1,4 @@
 import { sortbyfun } from "./home";
-export { sortbyfun };
+import { fetchapi } from "./fetchapi";
+import { getplaylistinfo } from "./getplaylistinfo";
+export { sortbyfun,fetchapi,getplaylistinfo };

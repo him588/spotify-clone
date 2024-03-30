@@ -7,9 +7,9 @@ function Useplaylist() {
     spotifyApi.setAccessToken(session?.user);
 
     const playlistinfo = useCallback(() => {
-        console.log(session);
+        // console.log(session);
         // Add your playlist information logic here
-    }, [session]);
+    }, []);
 
     return playlistinfo;
 }

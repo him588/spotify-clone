@@ -7,6 +7,9 @@ import CreateplaylistIcon from "./createplaylist";
 import Libicon from "./libicon";
 import MenuIcon from "./menuicon";
 import CorrectIcon from "./correcticon";
+import Playicon from "./pkayicon";
+import Instaicon from "./instaicon";
+import Twittericon from "./twittericon";
 export {
   Homeicon,
   Searchicon,
@@ -17,4 +20,7 @@ export {
   Libicon,
   MenuIcon,
   CorrectIcon,
+  Playicon,
+  Instaicon,
+  Twittericon,
 };
