@@ -22,7 +22,7 @@ export default function Home() {
     >
       <div
         className={`" h-full  flex flex-col gap-2 transition-all duration-150 ${
-          Increase ? "w-[55%] " : "w-[23%]"
+          Increase ? "w-[55%] " : "w-[300px]"
         } `}
       >
         <div className=" h-[120px] w-[full] bg-[#121212] rounded-md flex flex-col gap-4 p-5">
@@ -41,10 +41,10 @@ export default function Home() {
       </div>
       <div
         className={`h-full flex flex-col transition-all duration-150 ${
-          Increase ? "w-[45%]" : "w-[77%]"
+          Increase ? "w-[45%]" : "w-[calc(100%-300px)]"
         }`}
       >
-        <Playlistinfo token={token} />
+        <Playlistinfo token={token} increase={Increase} />
       </div>
     </div>
   );

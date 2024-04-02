@@ -10,6 +10,10 @@ import CorrectIcon from "./correcticon";
 import Playicon from "./pkayicon";
 import Instaicon from "./instaicon";
 import Twittericon from "./twittericon";
+import Videoplayicon from "./videoplayicon";
+import Videopauseicon from "./videopauseicon";
+import Addtofavicon from "./addtofavicon";
+import Threedoticon from "./3doticon";
 export {
   Homeicon,
   Searchicon,
@@ -23,4 +27,8 @@ export {
   Playicon,
   Instaicon,
   Twittericon,
+  Videoplayicon,
+  Videopauseicon,
+  Addtofavicon,
+  Threedoticon
 };
