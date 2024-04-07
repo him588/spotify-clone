@@ -1,11 +1,10 @@
 import React from "react";
 import Header from "../../components/core/header";
 import { Card, Footer } from "@/components/core";
-import Useplaylist from "@/components/custom/useplaylists";
 import { useSession } from "next-auth/react";
 import Recentlyplayed from "@/components/core/recentlyplayed";
 import Block from "./block";
-import {Button} from "@/components/core";
+import { Button } from "@/components/core";
 
 const colors = [
   "from-gray-800",
@@ -17,22 +16,20 @@ const colors = [
   "from-[#301414]",
 ];
 
-function Sidepage({ token,increase }: { token: string,increase:boolean }) {
+function Sidepage({ token, increase }: { token: string; increase: boolean }) {
   const { data } = useSession();
   // const {accessToken}=data
 
-  const playlistInfo = Useplaylist();
-  playlistInfo();
   return (
     <div className=" h-full w-full bg-[#121212] rounded-md overflow-scroll scrollbar-hide ">
       <div className="  relative w-full bg-gradient-to-b from-[#12181b]  to-[#121212]">
         <div className=" p-3  top-0 z-30 w-full">
           <Header />
-          <div className=' flex gap-2 py-4'>
-            <Button name='All'/>
-            <Button name='Music'/>
-            <Button name='Podcast'/>
-        </div>
+          <div className=" flex gap-2 py-4">
+            <Button name="All" />
+            <Button name="Music" />
+            <Button name="Podcast" />
+          </div>
         </div>
         <div className=" px-3 flex  flex-wrap  z-10 gap-3">
           <Recentlyplayed />

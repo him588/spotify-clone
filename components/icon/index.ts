@@ -14,6 +14,8 @@ import Videoplayicon from "./videoplayicon";
 import Videopauseicon from "./videopauseicon";
 import Addtofavicon from "./addtofavicon";
 import Threedoticon from "./3doticon";
+import SkipIcon from "./skipmusic";
+import VolumeIcon from "./volumeicon";
 export {
   Homeicon,
   Searchicon,
@@ -30,5 +32,7 @@ export {
   Videoplayicon,
   Videopauseicon,
   Addtofavicon,
-  Threedoticon
+  Threedoticon,
+  SkipIcon,
+  VolumeIcon,
 };

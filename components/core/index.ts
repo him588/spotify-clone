@@ -7,4 +7,16 @@ import Header from "./header";
 import Sortbybox from "./sortbybox";
 import Addplaylist from "./addplaylist";
 import Songinplaylist from "./songinplaylist";
-export { Button, Card, Recentlyplayed, Footer,Myplaylist,Header,Sortbybox,Addplaylist,Songinplaylist };
+import Musicplayer from "./musicplayer";
+export {
+  Button,
+  Card,
+  Recentlyplayed,
+  Footer,
+  Myplaylist,
+  Header,
+  Sortbybox,
+  Addplaylist,
+  Songinplaylist,
+  Musicplayer,
+};

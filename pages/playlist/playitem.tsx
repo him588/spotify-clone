@@ -1,16 +1,20 @@
 import { Footer, Songinplaylist } from "@/components/core";
 import Clockicon from "@/components/icon/clockicon";
 import React from "react";
-
-function Playitem({
-  items,
-  token,
-  increase,
-}: {
+type props = {
   items: any;
   token: string;
   increase: boolean;
-}) {
+  id: string;
+  type: string;
+};
+
+function Playitem({ items, token, increase, id, type }: props) {
+  console.log(items);
+  const show = items.filter((item: any) => {
+    return item.track.preview_url !== null;
+  });
+  console.log({ show });
   return (
     <div className=" w-full">
       <div className=" flex justify-between px-6">
@@ -29,13 +33,13 @@ function Playitem({
       </div>
       <div className=" h-[1px] w-full bg-[gray] bg-opacity-30 my-4 "></div>
       <div className=" w-full px-3 flex flex-col gap-2">
-        {items.map((item: any, index: number) => (
+        {show.map((item: any, index: number) => (
           <Songinplaylist
             key={index}
-            url={item.track.href}
-            token={token}
             number={index + 1}
             increase={increase}
+            item={item}
+            items={show}
           />
         ))}
       </div>

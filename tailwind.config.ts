@@ -13,9 +13,10 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      scrollbar: require("tailwind-scrollbar"),
     },
   },
-  plugins: [    require('tailwind-scrollbar-hide')
-],
+  plugins: [require("tailwind-scrollbar-hide")],
 };
+
 export default config;
