@@ -1,16 +1,17 @@
 import Image from "next/image";
 import { useContext, useEffect, useRef, useState } from "react";
 import React from "react";
-import { SkipIcon, Videoplayicon, VolumeIcon } from "../icon";
+import { SkipIcon, Videopauseicon, Videoplayicon, VolumeIcon } from "../icon";
 import { musicplayercontext } from "../context";
 import UseAudioPlayer from "../custom/usemusicplayer";
 
 function Musicplayer() {
   const [skipleft, setskipleft] = useState(false);
   const [skipright, setskipright] = useState(false);
-  const { musicplayer, setmusicplayer } = useContext(musicplayercontext);
+  const { musicplayer } = useContext(musicplayercontext);
+  const [playing, setplaying] = useState(true);
+
   const {
-    isPlaying,
     currentTime,
     audioRef,
     togglePlay,
@@ -24,6 +25,7 @@ function Musicplayer() {
   const currentindex = musicplayer?.containsIn.songs.findIndex(
     (song: any) => song.track.id === musicplayer.song.id
   );
+  useEffect(() => {}, [musicplayer]);
   return (
     <div className=" h-full w-full bg-[#121212] rounded-t-md flex justify-between items-center px-2 overflow-hidden">
       <div className=" flex items-center gap-3 w-[250px]">
@@ -58,23 +60,36 @@ function Musicplayer() {
             className=" flex items-center justify-center rotate-180 cursor-pointer"
             onMouseEnter={() => setskipleft(true)}
             onMouseLeave={() => setskipleft(false)}
-            onClick={playprevious}
+            onClick={() => {
+              playprevious();
+              setplaying(true);
+            }}
           >
             <SkipIcon h={35} w={35} c={skipleft ? "#1ed45e" : "white"} />
           </div>
           <div className=" h-[45px] w-[45px]">
             <div
-              onClick={togglePlay}
+              onClick={() => {
+                togglePlay();
+                setplaying((prev) => !prev);
+              }}
               className=" h-[40px] w-[40px] bg-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-100 hover:h-[42px] hover:w-[42px]"
             >
-              <Videoplayicon h={40} w={40} c="black" />
+              {playing ? (
+                <Videopauseicon h={25} w={25} c="black" />
+              ) : (
+                <Videoplayicon h={40} w={40} c="black" />
+              )}
             </div>
           </div>
           <div
             className=" flex items-center justify-center cursor-pointer"
             onMouseEnter={() => setskipright(true)}
             onMouseLeave={() => setskipright(false)}
-            onClick={playnext}
+            onClick={() => {
+              playnext();
+              setplaying(true);
+            }}
           >
             <SkipIcon h={35} w={35} c={skipright ? "#1ed45e" : "white"} />
           </div>

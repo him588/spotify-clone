@@ -1,23 +1,22 @@
 import { Homeicon, Searchicon } from "@/components/icon";
 import Myplaylist from "../../components/core/myplaylist";
 import { useContext, useEffect, useState } from "react";
+import Sidepage from "./sidepage";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import Playlistinfo from "./playlistinfo";
-import { musicplayercontext } from "@/components/context";
 import { Musicplayer, Topnav } from "@/components/core";
-export default function Home() {
+import { musicplayercontext } from "@/components/context";
+import Searchside from "./searchside";
+import { Router } from "next/router";
+export default function Search() {
   const [Increase, setIncrease] = useState(false);
-  const [token, settoken] = useState("");
+  const { musicplayer } = useContext(musicplayercontext);
   const { data: session } = useSession();
-  const router = useRouter();
-  const { id } = router.query;
+  const [token, settoken] = useState("");
   useEffect(() => {
     if (session && (session as any).accessToken) {
       settoken(() => (session as any).accessToken);
     }
   }, [session]);
-  const { musicplayer } = useContext(musicplayercontext);
 
   return (
     <div
@@ -32,7 +31,7 @@ export default function Home() {
       >
         <div
           className={`" h-full  flex flex-col gap-2 transition-all duration-150 ${
-            Increase ? "w-[55%] " : "w-[300px]"
+            Increase ? "w-[55%] " : "w-[23%]"
           } `}
         >
           <Topnav />
@@ -42,14 +41,10 @@ export default function Home() {
         </div>
         <div
           className={`h-full flex flex-col transition-all duration-150 ${
-            Increase ? "w-[45%]" : "w-[calc(100%-300px)]"
+            Increase ? "w-[45%]" : "w-[77%]"
           }`}
         >
-          <Playlistinfo
-            token={token}
-            increase={Increase}
-            id={id ? id.toString() : ""}
-          />
+          <Searchside increase={Increase} token={token} />
         </div>
       </div>
       <div

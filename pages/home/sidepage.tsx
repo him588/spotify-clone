@@ -1,25 +1,11 @@
 import React from "react";
 import Header from "../../components/core/header";
-import { Card, Footer } from "@/components/core";
-import { useSession } from "next-auth/react";
+import { Footer } from "@/components/core";
 import Recentlyplayed from "@/components/core/recentlyplayed";
 import Block from "./block";
 import { Button } from "@/components/core";
 
-const colors = [
-  "from-gray-800",
-  "from-[#12122c]",
-  "from-[#353535]",
-  "from-[#3d1935]",
-  "from-[#143026]",
-  "from-[#301414]",
-  "from-[#301414]",
-];
-
 function Sidepage({ token, increase }: { token: string; increase: boolean }) {
-  const { data } = useSession();
-  // const {accessToken}=data
-
   return (
     <div className=" h-full w-full bg-[#121212] rounded-md overflow-scroll scrollbar-hide ">
       <div className="  relative w-full bg-gradient-to-b from-[#12181b]  to-[#121212]">

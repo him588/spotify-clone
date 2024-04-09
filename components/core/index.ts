@@ -6,8 +6,10 @@ import Myplaylist from "./myplaylist";
 import Header from "./header";
 import Sortbybox from "./sortbybox";
 import Addplaylist from "./addplaylist";
-import Songinplaylist from "./songinplaylist";
+import Songinplaylist from "../../pages/playlist/songinplaylist";
 import Musicplayer from "./musicplayer";
+// import { Homeicon } from "../icon";
+import Topnav from "./topnav";
 export {
   Button,
   Card,
@@ -19,4 +21,5 @@ export {
   Addplaylist,
   Songinplaylist,
   Musicplayer,
+  Topnav,
 };

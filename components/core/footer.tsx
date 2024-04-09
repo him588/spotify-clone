@@ -71,7 +71,7 @@ function Footer({ increase }: { increase: boolean }) {
       <div className=" h-[1px] w-full bg-[gray] bg-opacity-50 my-8"></div>
       <div className=" flex items-end justify-end">
         <p className="text-[#898989] text-[14px] font-semibold">
-          © 2024 Spotify AB
+          © 2024 Spotify.co
         </p>
       </div>
     </div>
