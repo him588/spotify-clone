@@ -3,18 +3,20 @@ import Header from "../../components/core/header";
 import { Footer } from "@/components/core";
 import { CrossIcon } from "@/components/icon";
 import { useRouter } from "next/router";
-import { UseSearch } from "@/components/custom";
 import { Usesearch } from "@/components/custom/usesearch";
+import Topresult from "./topresult";
+import Playlistpart from "./playlistpart";
 
-function Searchside({ increase,token }: { increase: boolean ,token:string}) {
+function Searchside({ increase, token }: { increase: boolean; token: string }) {
   const [searchinput, setsearchinput] = useState("");
   const router = useRouter();
   const { search } = router.query;
-  const {searchData}=Usesearch(token,searchinput)
-  useEffect(()=>{
-    setsearchinput(search?search.toString():"")
-  },[search])
-  console.log({searchData})
+  const { searchData } = Usesearch(token, searchinput);
+  useEffect(() => {
+    setsearchinput(search ? search.toString() : "");
+  }, [search]);
+  console.log({ searchData });
+  // const { artist, track, playlist } = searchData;
   return (
     <div className="h-full w-full bg-[#121212] rounded-md overflow-scroll scrollbar-hide relative">
       <div className="relative w-full bg-gradient-to-b from-[#12181b] to-[#121212] pt-1">
@@ -46,12 +48,23 @@ function Searchside({ increase,token }: { increase: boolean ,token:string}) {
           </div>
         </div>
 
-        <div className="w-full px-3 -mt-1">
-          <p className="text-[28px] text-white font-bold">Browse all</p>
-          <div></div>
+        <div className="w-full px-3 -mt-1 flex flex-col gap-2">
+          <div>
+            {searchData !== null ? (
+              <Topresult tracks={searchData.tracks} />
+            ) : (
+              ""
+            )}
+          </div>
+          <div className=" mt-2">
+            {searchData !== null ? (
+              <Playlistpart playlists={searchData.playlists} />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
-      <div className="p-3"></div>
       <div className="w-full p-3">
         <Footer increase={increase} />
       </div>

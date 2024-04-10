@@ -31,7 +31,7 @@ export default function Search() {
       >
         <div
           className={`" h-full  flex flex-col gap-2 transition-all duration-150 ${
-            Increase ? "w-[55%] " : "w-[23%]"
+            Increase ? "w-[52%] " : "w-[400px]"
           } `}
         >
           <Topnav />
@@ -41,7 +41,7 @@ export default function Search() {
         </div>
         <div
           className={`h-full flex flex-col transition-all duration-150 ${
-            Increase ? "w-[45%]" : "w-[77%]"
+            Increase ? "w-[48%]" : "w-[calc(100%-400px)]"
           }`}
         >
           <Sidepage increase={Increase} />

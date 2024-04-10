@@ -1,4 +1,5 @@
-import { Footer, Songinplaylist } from "@/components/core";
+import { Footer } from "@/components/core";
+import Songinplaylist from "./songinplaylist";
 import Clockicon from "@/components/icon/clockicon";
 import React from "react";
 type props = {
@@ -9,12 +10,10 @@ type props = {
   type: string;
 };
 
-function Playitem({ items, token, increase, id, type }: props) {
-  console.log(items);
+function Playitem({ items, increase }: props) {
   const show = items.filter((item: any) => {
     return item.track.preview_url !== null;
   });
-  console.log({ show });
   return (
     <div className=" w-full">
       <div className=" flex justify-between px-6">

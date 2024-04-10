@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Playlist } from "@/types/type";
+import { Playicon } from "../icon";
 
-function Card({ playlist }: { playlist: Playlist }) {
+function  Card({ playlist }: { playlist: Playlist }) {
+  const [show,setshow]=useState(false)
   return (
     <Link href={`/playlist/${playlist.id}`}>
       <div
-        onClick={() => console.log(playlist.id)}
-        className=" flex flex-col w-[100%] h-[260px] p-2  rounded-lg cursor-pointer hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-sm hover:bg-opacity-5 hover:bg-gray-200   "
+        onMouseEnter={()=>{setshow(true)}}
+        onMouseLeave={()=>{setshow(false)}}
+        className=" flex relative flex-col w-[100%] h-[260px] p-2  rounded-lg cursor-pointer hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-sm hover:bg-opacity-5 hover:bg-gray-200   "
       >
         <Image
           height={0}
@@ -30,6 +33,9 @@ function Card({ playlist }: { playlist: Playlist }) {
             {playlist.owner.display_name}
           </p>
         </div>
+        <div className={` absolute right-3 bottom-[80px] transition-all duration-150 ${show?" opacity-100 translate-y-0":" opacity-0 translate-y-11"}`}  >
+         <Playicon ch={45} cw={45} h={25} w={25} c='black'/>
+      </div>
       </div>
     </Link>
   );

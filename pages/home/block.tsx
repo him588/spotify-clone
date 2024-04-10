@@ -15,7 +15,7 @@ function Block({
 }) {
   const [playlistsdata, setplaylistsdata] = useState<Playlist[] | null>(null);
   useEffect(() => {
-    const data = fetchapi(token, type, increase ? 3 : 5);
+    const data = fetchapi(token, type, increase ? 3 : 4);
     data
       .then((data) => setplaylistsdata(data.playlists.items))
       .catch((error) => console.log(error));
@@ -32,7 +32,7 @@ function Block({
       </div>
       <div
         className={` grid  gap-3 -mt-1 grid-rows-1 overflow-hidden ${
-          increase ? " grid-cols-3" : "grid-cols-5"
+          increase ? " grid-cols-3" : "grid-cols-4"
         }`}
       >
         {playlistsdata?.map((playlist) => {

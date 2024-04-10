@@ -104,7 +104,7 @@ function Songinplaylist({ number, increase, item, items }: props) {
       {increase ? (
         ""
       ) : (
-        <div className=" flex items-center justify-center w-[33%] ">
+        <div className=" flex items-center justify-center w-[33%] ml-10 ">
           {item && item.track.album && item.track.album.name && (
             <p
               className={`" text-[14px]  font-normal text-left  hover:underline hover:underline-offset-1 hover:decoration-white ${

@@ -31,7 +31,7 @@ function Box({
     <div
       ref={divRef}
       className={`  w-full  rounded-lg relative overflow-hidden cursor-pointer transition-all duration-150 ease-in-out hover:shadow-2xl hover:shadow-[color] ${
-        increase ? "h-[170px]" : "h-[200px]"
+        increase ? "h-[170px]" : "h-[180px]"
       }`}
       style={{ backgroundColor: color }}
     >

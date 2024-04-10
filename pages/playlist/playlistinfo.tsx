@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { getplaylistinfo } from "@/components/helper";
 import { Header } from "@/components/core";
 import {
   Addtofavicon,
@@ -9,7 +8,6 @@ import {
   Videoplayicon,
 } from "@/components/icon";
 import Playitem from "./playitem";
-// import { UsePlaylistInfo } from "@/components/custom";
 import { UsePlaylistInfo } from "@/components/custom";
 
 interface PlaylistinfoProps {
@@ -63,7 +61,7 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
                       : "text-[100px] leading-[100px]"
                   }`}
                 >
-                  {playlistData.name.slice(0, 10)}...
+                  {playlistData.name.slice(0, 8)}...
                 </p>
               )}
             </div>
