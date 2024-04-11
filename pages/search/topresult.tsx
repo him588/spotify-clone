@@ -1,11 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { Playicon } from "@/components/icon";
 import Song from "./song";
+import { musicplayercontext } from "@/components/context";
 
 function Topresult({ tracks }: { tracks: any }) {
   console.log({ tracks });
   const [show, setshow] = useState(false);
+  const { setmusicplayer } = useContext(musicplayercontext);
+  function handleclick() {
+    const artist = {
+      name: tracks.items[0].artists[0].name,
+      artistid: tracks.items[0].artists[0].id,
+    };
+    const song = {
+      name: tracks.items[0].name,
+      img: tracks.items[0].album.images[0].url,
+      id: tracks.items[0].id,
+      url: tracks.items[0].preview_url,
+      exists_at: 0,
+    };
+    const containsin = {
+      type: "songs",
+      songs: tracks.items,
+    };
+    setmusicplayer(() => {
+      return { artist: artist, song: song, containsIn: containsin };
+    });
+  }
 
   return (
     <>
@@ -20,6 +42,7 @@ function Topresult({ tracks }: { tracks: any }) {
               onMouseLeave={() => {
                 setshow(false);
               }}
+              onClick={handleclick}
               className={`w-full h-[280px] ${
                 show ? "bg-gray-400" : "bg-gray-700"
               }  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-md cursor-pointer p-4 relative`}

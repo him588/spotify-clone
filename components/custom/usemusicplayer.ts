@@ -8,21 +8,6 @@ const UseAudioPlayer = () => {
   const [isPlaying, setisPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
-  //   console.log(musicplayer?.song.exists_at);
-
-  //   useEffect(() => {
-  //     if (audioRef.current) {
-  //       audioRef.current.addEventListener("timeupdate", updateTime);
-  //       audioRef.current.addEventListener("ended", handleAudioEnd);
-
-  //       return () => {
-  //         if (audioRef.current) {
-  //           audioRef.current.removeEventListener("timeupdate", updateTime);
-  //           audioRef.current.removeEventListener("ended", handleAudioEnd);
-  //         }
-  //       };
-  //     }
-  //   }, []);
 
   const updateTime = () => {
     if (audioRef.current) {
@@ -82,15 +67,14 @@ const UseAudioPlayer = () => {
     } else {
       const index = musicplayer?.song.exists_at;
       const artist = {
-        name: musicplayer?.containsIn.songs[index! - 1].track.artists[0].name,
-        artistid: musicplayer?.containsIn.songs[index! - 1].track.artists[0].id,
+        name: musicplayer?.containsIn.songs[index! - 1].artists[0].name,
+        artistid: musicplayer?.containsIn.songs[index! - 1].artists[0].id,
       };
       const song = {
-        name: musicplayer?.containsIn.songs[index! - 1].track.name,
-        img: musicplayer?.containsIn.songs[index! - 1].track.album.images[0]
-          .url,
-        id: musicplayer?.containsIn.songs[index! - 1].track.id,
-        url: musicplayer?.containsIn.songs[index! - 1].track.preview_url,
+        name: musicplayer?.containsIn.songs[index! - 1].name,
+        img: musicplayer?.containsIn.songs[index! - 1].album.images[0].url,
+        id: musicplayer?.containsIn.songs[index! - 1].id,
+        url: musicplayer?.containsIn.songs[index! - 1].preview_url,
         exists_at: index! - 1,
       };
       const containsin = {
@@ -111,15 +95,14 @@ const UseAudioPlayer = () => {
     } else {
       const index = musicplayer?.song.exists_at;
       const artist = {
-        name: musicplayer?.containsIn.songs[index! + 1].track.artists[0].name,
-        artistid: musicplayer?.containsIn.songs[index! + 1].track.artists[0].id,
+        name: musicplayer?.containsIn.songs[index! + 1].artists[0].name,
+        artistid: musicplayer?.containsIn.songs[index! + 1].artists[0].id,
       };
       const song = {
-        name: musicplayer?.containsIn.songs[index! + 1].track.name,
-        img: musicplayer?.containsIn.songs[index! + 1].track.album.images[0]
-          .url,
-        id: musicplayer?.containsIn.songs[index! + 1].track.id,
-        url: musicplayer?.containsIn.songs[index! + 1].track.preview_url,
+        name: musicplayer?.containsIn.songs[index! + 1].name,
+        img: musicplayer?.containsIn.songs[index! + 1].album.images[0].url,
+        id: musicplayer?.containsIn.songs[index! + 1].id,
+        url: musicplayer?.containsIn.songs[index! + 1].preview_url,
         exists_at: index! + 1,
       };
       const containsin = {

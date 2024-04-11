@@ -38,7 +38,7 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
           <Header />
         </div>
         <div className="flex gap-5 py-3 pl-5">
-          <div className="">
+          <div className={` overflow-hidden ${increase ? "h-[120px] ": "h-[230px]"}`}>
             {playlistData?.images?.[0] && (
               <Image
                 src={playlistData.images[0].url}
@@ -66,7 +66,7 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
               )}
             </div>
             <div
-              className={`text-white text-sm font-normal flex gap-1 ${
+              className={`text-white text-sm font-normal  flex gap-1 ${
                 increase ? "mt-3" : "mt-12"
               }`}
             >

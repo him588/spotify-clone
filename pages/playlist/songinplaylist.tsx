@@ -18,8 +18,10 @@ function Songinplaylist({ number, increase, item, items }: props) {
   const [hover, sethover] = useState(false);
   const { setmusicplayer } = useContext(musicplayercontext);
 
+  console.log(item);
+  console.log({ items });
+
   function handleclick() {
-    console.log(item);
     const artist = {
       name: item.track.artists[0].name,
       artistid: item.track.artists[0].id,
@@ -39,7 +41,6 @@ function Songinplaylist({ number, increase, item, items }: props) {
       return { artist: artist, song: song, containsIn: containsin };
     });
   }
-  console.log(item);
   return (
     <div
       onMouseEnter={() => sethover(true)}

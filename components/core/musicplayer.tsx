@@ -12,7 +12,6 @@ function Musicplayer() {
   const [playing, setplaying] = useState(true);
 
   const {
-    currentTime,
     audioRef,
     togglePlay,
     handleAudioEnd,
@@ -22,9 +21,7 @@ function Musicplayer() {
     playnext,
     playprevious,
   } = UseAudioPlayer();
-  const currentindex = musicplayer?.containsIn.songs.findIndex(
-    (song: any) => song.track.id === musicplayer.song.id
-  );
+
   useEffect(() => {}, [musicplayer]);
   return (
     <div className=" h-full w-full bg-[#121212] rounded-t-md flex justify-between items-center px-2 overflow-hidden">

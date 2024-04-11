@@ -1,7 +1,7 @@
 import { Footer } from "@/components/core";
 import Songinplaylist from "./songinplaylist";
 import Clockicon from "@/components/icon/clockicon";
-import React from "react";
+import React, { useEffect, useState } from "react";
 type props = {
   items: any;
   token: string;
@@ -14,6 +14,8 @@ function Playitem({ items, increase }: props) {
   const show = items.filter((item: any) => {
     return item.track.preview_url !== null;
   });
+  const songs = show.map((item:any) => item.track);
+  
   return (
     <div className=" w-full">
       <div className=" flex justify-between px-6">
@@ -38,7 +40,7 @@ function Playitem({ items, increase }: props) {
             number={index + 1}
             increase={increase}
             item={item}
-            items={show}
+            items={songs}
           />
         ))}
       </div>
