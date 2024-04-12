@@ -17,6 +17,7 @@ import Threedoticon from "./3doticon";
 import SkipIcon from "./skipmusic";
 import VolumeIcon from "./volumeicon";
 import CrossIcon from "./crossicon";
+import Loveicon from "./loveicon";
 export {
   Homeicon,
   Searchicon,
@@ -37,4 +38,5 @@ export {
   SkipIcon,
   VolumeIcon,
   CrossIcon,
+  Loveicon
 };

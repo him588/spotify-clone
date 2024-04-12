@@ -1,4 +1,3 @@
-import { Homeicon, Searchicon } from "@/components/icon";
 import Myplaylist from "../../components/core/myplaylist";
 import { useContext, useEffect, useState } from "react";
 import Sidepage from "./sidepage";
@@ -11,13 +10,8 @@ export default function Home() {
   const { musicplayer } = useContext(musicplayercontext);
   const { data: session } = useSession();
   const [token, settoken] = useState("");
-  // const { users, setUsers } = useContext(UserContext) || [];
   const setUsers=useContext(UserContext)?.setUsers
-  const users=useContext(UserContext)?.users
-  console.log(users)
-  // localStorage.clear()
   useEffect(() => {
-    // localStorage.clear()
     if (session && (session as any).accessToken) {
       settoken(() => (session as any).accessToken);
     }
@@ -42,6 +36,7 @@ export default function Home() {
       });
     }
   }, [session,  setUsers]);
+  
   return (
     <div
       className={` scrollbar-thin bg-black scrollbar-thumb-slate-950 ${

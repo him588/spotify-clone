@@ -15,10 +15,16 @@ export type CustomUser = {
   image?: string | null | undefined;
   accessToken?: string | null | undefined; // Add accessToken here
 };
+export type playlist ={
+  name:string,
+  ownername:string,
+  id:string,
+  image:string
+}
 export type user = {
   name: string;
   email: string;
-  playlist: [];
+  playlist: playlist[];
   likedsong: Track[];
 };
 interface Artist {

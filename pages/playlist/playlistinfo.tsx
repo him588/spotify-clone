@@ -9,6 +9,8 @@ import {
 } from "@/components/icon";
 import Playitem from "./playitem";
 import { UsePlaylistInfo } from "@/components/custom";
+import { UsePlaylistManagement } from "@/components/custom/usemanageplaylist";
+import { playlist } from "@/types/type";
 
 interface PlaylistinfoProps {
   token: string;
@@ -18,6 +20,8 @@ interface PlaylistinfoProps {
 
 function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
   const { playlistData, loading, error } = UsePlaylistInfo(token, id);
+  const {handleAddPlaylist}=UsePlaylistManagement()
+  // console.log({playlistData})
   const colors = [["#ea7861", "#7b3f33"]];
   function getRandomColorPair() {
     const randomIndex = Math.floor(Math.random() * colors.length);
@@ -25,6 +29,15 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
   }
 
   const randomColorPair = getRandomColorPair();
+  function handleadd(){
+    const playlist:playlist={
+      name:playlistData.name,
+      ownername:playlistData.owner.display_name,
+      id:playlistData.id,
+      image:playlistData.images[0].url
+    }
+    handleAddPlaylist(playlist)
+  }
   // console.log(randomColorPair);
 
   return (
@@ -96,7 +109,7 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
           <div className="h-[55px] w-[55px] rounded-full bg-[#1ed760] flex items-center justify-center cursor-pointer">
             <Videoplayicon w={45} h={45} c="black" />
           </div>
-          <div className="cursor-pointer">
+          <div className="cursor-pointer" onClick={handleadd}>
             <Addtofavicon h={35} w={35} c="#a7a7a7" />
           </div>
           <div>

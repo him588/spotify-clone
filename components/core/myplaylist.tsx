@@ -7,10 +7,11 @@ import {
   MenuIcon,
   Searchicon,
 } from "@/components/icon";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Sortbybox from "./sortbybox";
 import { sorted } from "@/types/type";
 import Addplaylist from "./addplaylist";
+import Likedsection from "./likedsection";
 type prop = {
   Increase: boolean;
   setIncrease: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,6 +29,7 @@ function Myplaylist({ Increase, setIncrease }: prop) {
     Alphabetical: false,
     Creator: false,
   });
+  
   useEffect(() => {
     if (sortby.Recents) {
       setsortvalue("Recents");
@@ -41,12 +43,12 @@ function Myplaylist({ Increase, setIncrease }: prop) {
   }, [sortby]);
   return (
     <div
-      className=" h-full w-full p-3"
+      className=" h-full w-full p-3 overflow-scroll scrollbar-hide"
       onClick={() => {
         setshowmenu(false);
       }}
     >
-      <div className=" flex items-center justify-between">
+      <div className=" flex items-center justify-between ">
         <div className=" flex gap-2 items-center">
           <Libicon h={28} w={28} c="#a7a7a7" />
           <p className=" font-semibold text-[#a7a7a7] text-[16px]">
@@ -153,6 +155,9 @@ function Myplaylist({ Increase, setIncrease }: prop) {
             )}
           </div>
         </div>
+      </div>
+      <div className="  w-full overflow-scroll scrollbar-hide">
+        <Likedsection/>
       </div>
     </div>
   );
