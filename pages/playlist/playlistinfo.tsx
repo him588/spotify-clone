@@ -25,7 +25,7 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
   }
 
   const randomColorPair = getRandomColorPair();
-  console.log(randomColorPair);
+  // console.log(randomColorPair);
 
   return (
     <div className="bg-[#121212] h-full w-full rounded-md overflow-scroll scrollbar-hide">

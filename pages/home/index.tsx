@@ -4,18 +4,44 @@ import { useContext, useEffect, useState } from "react";
 import Sidepage from "./sidepage";
 import { useSession } from "next-auth/react";
 import { Musicplayer, Topnav } from "@/components/core";
-import { musicplayercontext } from "@/components/context";
+import { UserContext, musicplayercontext } from "@/components/context";
+import { user } from "@/types/type";
 export default function Home() {
   const [Increase, setIncrease] = useState(false);
   const { musicplayer } = useContext(musicplayercontext);
   const { data: session } = useSession();
   const [token, settoken] = useState("");
+  // const { users, setUsers } = useContext(UserContext) || [];
+  const setUsers=useContext(UserContext)?.setUsers
+  const users=useContext(UserContext)?.users
+  console.log(users)
+  // localStorage.clear()
   useEffect(() => {
+    // localStorage.clear()
     if (session && (session as any).accessToken) {
-      // console.log((session as any).accessToken);
       settoken(() => (session as any).accessToken);
     }
-  }, [session]);
+    const userEmail = session?.user?.email;
+    const userName = session?.user?.name;
+    if (setUsers && userEmail && userName) {
+      setUsers((prevUsers) => {
+        const userExists = prevUsers.some((user) => user.email === userEmail);
+        if (!userExists) {
+          const newUser: user = {
+            name: userName,
+            email: userEmail,
+            playlist: [],
+            likedsong: [],
+          };
+          const updatedUsers = [...prevUsers, newUser];
+          localStorage.setItem("users", JSON.stringify(updatedUsers));
+          console.log({updatedUsers})
+          return updatedUsers;
+        }
+        return prevUsers;
+      });
+    }
+  }, [session,  setUsers]);
   return (
     <div
       className={` scrollbar-thin bg-black scrollbar-thumb-slate-950 ${

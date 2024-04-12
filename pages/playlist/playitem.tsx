@@ -35,11 +35,12 @@ function Playitem({ items, increase }: props) {
       <div className=" h-[1px] w-full bg-[gray] bg-opacity-30 my-4 "></div>
       <div className=" w-full px-3 flex flex-col gap-2">
         {show.map((item: any, index: number) => (
+          
           <Songinplaylist
             key={index}
             number={index + 1}
             increase={increase}
-            item={item}
+            item={item.track}
             items={songs}
           />
         ))}

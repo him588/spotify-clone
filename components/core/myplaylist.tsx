@@ -85,8 +85,8 @@ function Myplaylist({ Increase, setIncrease }: prop) {
         } `}
       >
         <div className=" flex gap-2">
-          <Button name="Artists" />
-          <Button name="Albums" />
+          <Button name="All" />
+          <Button name="Liked song " />
           <Button name="Playlist" />
         </div>
         <div

@@ -1,46 +1,49 @@
 import React, { useContext, useEffect, useState } from "react";
 import { fetchsonginfo } from "../../components/helper";
+import { Track, user } from "@/types/type";
 import Image from "next/image";
 import {
   Addtofavicon,
   Threedoticon,
   Videoplayicon,
 } from "../../components/icon";
-import { musicplayercontext } from "../../components/context";
+import { UserContext, musicplayercontext } from "../../components/context";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { UseUserSongManagement } from "@/components/custom";
 type props = {
   number: number;
   increase: boolean;
   item: any;
-  items: any;
+  items: any[];
 };
 function Songinplaylist({ number, increase, item, items }: props) {
   const [hover, sethover] = useState(false);
   const { setmusicplayer } = useContext(musicplayercontext);
-
-  console.log(item);
-  console.log({ items });
+  const {handleAdd}=UseUserSongManagement()
+  
 
   function handleclick() {
-    const artist = {
-      name: item.track.artists[0].name,
-      artistid: item.track.artists[0].id,
-    };
-    const song = {
-      name: item.track.name,
-      img: item.track.album.images[0].url,
-      id: item.track.id,
-      url: item.track.preview_url,
-      exists_at: number - 1,
-    };
-    const containsin = {
-      type: "playlist",
-      songs: items,
-    };
     setmusicplayer(() => {
+      const artist = {
+        name: item.artists[0].name,
+        artistid: item.artists[0].id,
+      };
+      const song = {
+        name: item.name,
+        img: item.album.images[0].url,
+        id: item.id,
+        url: item.preview_url,
+        exists_at: number - 1,
+      };
+      const containsin = {
+        type: "playlist",
+        songs: items,
+      };
       return { artist: artist, song: song, containsIn: containsin };
     });
   }
+
   return (
     <div
       onMouseEnter={() => sethover(true)}
@@ -63,12 +66,12 @@ function Songinplaylist({ number, increase, item, items }: props) {
 
         <div className=" flex gap-3">
           {item &&
-            item.track &&
-            item.track.album &&
-            item.track.album.images[0] &&
-            item.track.album.images[0].url && (
+            item &&
+            item.album &&
+            item.album.images[0] &&
+            item.album.images[0].url && (
               <Image
-                src={item.track.album.images[0].url}
+                src={item.album.images[0].url}
                 alt=""
                 unoptimized
                 height={0}
@@ -79,10 +82,10 @@ function Songinplaylist({ number, increase, item, items }: props) {
 
           <div>
             <p className=" text-white font-medium">
-              {item.track.name.slice(0, 15)}...
+              {item.name.slice(0, 15)}...
             </p>
             <div className=" flex">
-              {item.track.artists.map((artist: any, index: number) => {
+              {item.artists.map((artist: any, index: number) => {
                 if (index < 2) {
                   return (
                     <Link key={index} href={`/artist/${artist.id}`}>
@@ -106,22 +109,22 @@ function Songinplaylist({ number, increase, item, items }: props) {
         ""
       ) : (
         <div className=" flex items-center justify-center w-[33%] ml-10 ">
-          {item && item.track.album && item.track.album.name && (
+          {item && item.album && item.album.name && (
             <p
               className={`" text-[14px]  font-normal text-left  hover:underline hover:underline-offset-1 hover:decoration-white ${
                 hover ? "text-white" : "text-[gray]"
               } `}
             >
-              {item.track.album.name}
+              {item.album.name}
             </p>
           )}
         </div>
       )}
 
       <div className=" flex gap-4 w-[33%]    items-center justify-end text-[gray] text-[15px] font-medium">
-        {hover ? <Addtofavicon h={20} w={20} c="white" /> : ""}
-        {hover ? <Threedoticon h={20} w={20} c="white" /> : ""}
-        <p>{(item.track.duration_ms / 60000).toFixed(2)}</p>
+        <div onClick={(e)=>handleAdd(e,item)}>{hover ? <Addtofavicon h={20} w={20} c="white" /> : ""}</div>
+        <div>{hover ? <Threedoticon h={20} w={20} c="white" /> : ""}</div>
+        <p>{(item.duration_ms / 60000).toFixed(2)}</p>
       </div>
     </div>
   );

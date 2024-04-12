@@ -9,61 +9,76 @@ export type sorted = {
   Alphabetical: Boolean;
   Creator: Boolean;
 };
-export type  CustomUser= {
+export type CustomUser = {
   name?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
   accessToken?: string | null | undefined; // Add accessToken here
-}
-export type user={
-  name:string,
-  email:string,
-  playlist:[],
-  likedsong:[]
-
-}
-interface Owner {
-  display_name: string;
-  external_urls: { [key: string]: string };
-  href: string;
-  id: string;
-  type: string;
-  // Add more properties if necessary
-}
-
-interface Image {
-  height: number;
-  url: string;
-  width: number;
-  // Add more properties if necessary
-}
-
-interface ExternalUrls {
-  spotify: string;
-  // Add more properties if necessary
-}
-
-interface Tracks {
-  href: string;
-  total: number;
-  // Add more properties if necessary
-}
-
-export interface Playlist {
-  collaborative: boolean;
-  description: string;
-  external_urls: ExternalUrls;
-  href: string;
-  id: string;
-  images: Image[];
+};
+export type user = {
   name: string;
-  owner: Owner;
-  primary_color: string | null;
-  public: boolean | null;
-  snapshot_id: string;
-  tracks: Tracks;
+  email: string;
+  playlist: [];
+  likedsong: Track[];
+};
+interface Artist {
+  external_urls: {
+    spotify: string;
+  };
+  href: string;
+  id: string;
+  name: string;
   type: string;
   uri: string;
 }
 
-export type users=user[]
+interface Album {
+  available_markets: string[];
+  type: string;
+  album_type: string;
+  href: string;
+  id: string;
+  images: {
+    url: string;
+    width: number;
+    height: number;
+  }[];
+  name: string;
+  release_date: string;
+  release_date_precision: string;
+  uri: string;
+  artists: Artist[];
+  external_urls: {
+    spotify: string;
+  };
+  total_tracks: number;
+}
+
+interface ExternalIds {
+  isrc: string;
+}
+
+interface ExternalUrls {
+  spotify: string;
+}
+
+export interface Track {
+  available_markets: string[];
+  explicit: boolean;
+  type: string;
+  episode: boolean;
+  track: boolean;
+  album: Album;
+  artists: Artist[];
+  disc_number: number;
+  track_number: number;
+  duration_ms: number;
+  external_ids: ExternalIds;
+  external_urls: ExternalUrls;
+  href: string;
+  id: string;
+  name: string;
+  popularity: number;
+  uri: string;
+  is_local: boolean;
+}
