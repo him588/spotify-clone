@@ -11,16 +11,14 @@ function Likedsection() {
     const {users}=useContext(UserContext)||{}
     const [currentuser,setcurrentuser]=useState<user|null>(null)
     const {data:session}=useSession()
-    console.log({currentuser})
+    // console.log({currentuser})
     // const router=useRouter()
     useEffect(()=>{
-        console.log({users})
         const email=session?.user?.email
         setcurrentuser((prev)=>{
             if(users&&email){
                 const index = users.findIndex(user => user.email === email);
                 if(index!==-1){
-                    console.log("hello")
                     const newuser=users[index]
                     return newuser
                 }else{

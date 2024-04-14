@@ -18,6 +18,7 @@ import SkipIcon from "./skipmusic";
 import VolumeIcon from "./volumeicon";
 import CrossIcon from "./crossicon";
 import Loveicon from "./loveicon";
+import Subicon from "./subicon";
 export {
   Homeicon,
   Searchicon,
@@ -38,5 +39,6 @@ export {
   SkipIcon,
   VolumeIcon,
   CrossIcon,
-  Loveicon
+  Loveicon,
+  Subicon
 };

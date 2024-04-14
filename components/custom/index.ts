@@ -3,4 +3,5 @@ import { UsePlaylistInfo } from "./useplaylistinfo";
 import { UseArtistInfo } from "./useartistinfo";
 import { Usesearch } from "./usesearch";
 import { UseUserSongManagement } from "./likedsongmange";
-export { UseAudioPlayer, UsePlaylistInfo, UseArtistInfo, Usesearch ,UseUserSongManagement};
+import Usecurrentuser from "./usecurrentuser";
+export { UseAudioPlayer, UsePlaylistInfo, UseArtistInfo, Usesearch ,UseUserSongManagement,Usecurrentuser};

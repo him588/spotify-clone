@@ -4,13 +4,14 @@ import { Track, user } from "@/types/type";
 import Image from "next/image";
 import {
   Addtofavicon,
+  Subicon,
   Threedoticon,
   Videoplayicon,
 } from "../../components/icon";
 import { UserContext, musicplayercontext } from "../../components/context";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { UseUserSongManagement } from "@/components/custom";
+import { UseUserSongManagement, Usecurrentuser } from "@/components/custom";
 type props = {
   number: number;
   increase: boolean;
@@ -20,8 +21,18 @@ type props = {
 function Songinplaylist({ number, increase, item, items }: props) {
   const [hover, sethover] = useState(false);
   const { setmusicplayer } = useContext(musicplayercontext);
-  const {handleAdd}=UseUserSongManagement()
-  
+  const {handleAdd,handleRemove}=UseUserSongManagement()
+  const {currentuser}=Usecurrentuser()
+  const [contains,iscontains]=useState<boolean>()
+  useEffect(()=>{
+    iscontains(()=>{
+      const index=currentuser?.likedsong.findIndex((l)=>l.id===item.id)
+      if(index===-1){
+        return false
+      }else return true
+    })
+  },[item,currentuser])
+  console.log(currentuser)
 
   function handleclick() {
     setmusicplayer(() => {
@@ -122,8 +133,7 @@ function Songinplaylist({ number, increase, item, items }: props) {
       )}
 
       <div className=" flex gap-4 w-[33%]    items-center justify-end text-[gray] text-[15px] font-medium">
-        <div onClick={(e)=>handleAdd(e,item)}>{hover ? <Addtofavicon h={20} w={20} c="white" /> : ""}</div>
-        <div>{hover ? <Threedoticon h={20} w={20} c="white" /> : ""}</div>
+        <div >{hover ?contains?<div onClick={(e)=>{handleRemove(e,item)}}><Subicon h={20} w={20} c="white" /></div>: <div onClick={(e)=>handleAdd(e,item)} ><Addtofavicon h={20} w={20} c="white" /></div> :""}</div>
         <p>{(item.duration_ms / 60000).toFixed(2)}</p>
       </div>
     </div>
