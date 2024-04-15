@@ -15,7 +15,7 @@ function Searchside({ increase, token }: { increase: boolean; token: string }) {
   useEffect(() => {
     setsearchinput(search ? search.toString() : "");
   }, [search]);
-  console.log({ searchData });
+  // console.log({ searchData });
   // const { artist, track, playlist } = searchData;
   return (
     <div className="h-full w-full bg-[#121212] rounded-md overflow-scroll scrollbar-hide relative">

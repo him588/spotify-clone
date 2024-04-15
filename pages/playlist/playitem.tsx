@@ -1,5 +1,5 @@
 import { Footer } from "@/components/core";
-import Songinplaylist from "./songinplaylist";
+import Songinplaylist from "../../components/core/songinplaylist";
 import Clockicon from "@/components/icon/clockicon";
 import React, { useEffect, useState } from "react";
 type props = {

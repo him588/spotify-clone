@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 function Box({
   increase,
@@ -28,6 +29,9 @@ function Box({
     };
   }, []);
   return (
+    <Link href={`search/${name}`} >
+
+
     <div
       ref={divRef}
       className={`  w-full  rounded-lg relative overflow-hidden cursor-pointer transition-all duration-150 ease-in-out hover:shadow-2xl hover:shadow-[color] ${
@@ -47,6 +51,7 @@ function Box({
         />
       </div>
     </div>
+    </Link>
   );
 }
 

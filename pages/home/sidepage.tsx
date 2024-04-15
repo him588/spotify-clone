@@ -17,13 +17,13 @@ function Sidepage({ token, increase }: { token: string; increase: boolean }) {
             <Button name="Podcast" />
           </div>
         </div>
-        <div className=" px-3 flex  flex-wrap  z-10 gap-3">
+        {/* <div className=" px-3 flex  flex-wrap  z-10 gap-3">
           <Recentlyplayed />
           <Recentlyplayed />
           <Recentlyplayed />
-        </div>
+        </div> */}
       </div>
-      <div className="p-3">
+      <div className="p-3 -mt-3">
         <Block token={token} increase={increase} type="Work out" />
         <Block token={token} increase={increase} type="Party" />
         <Block token={token} increase={increase} type="Lofi" />

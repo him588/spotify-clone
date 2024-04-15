@@ -1,15 +1,38 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import { Addtofavicon, Threedoticon } from "@/components/icon";
+import { musicplayercontext } from "@/components/context";
 import Image from "next/image";
 
-function Song({ item }: { item: any }) {
+function Song({ item,items,number }: { item: any,items:any,number:number }) {
   const [hover, sethover] = useState(false);
+  const { setmusicplayer } = useContext(musicplayercontext);
+
+  function handleclick() {
+    setmusicplayer(() => {
+      const artist = {
+        name: item.artists[0].name,
+        artistid: item.artists[0].id,
+      };
+      const song = {
+        name: item.name,
+        img: item.album.images[0].url,
+        id: item.id,
+        url: item.preview_url,
+        exists_at: number ,
+      };
+      const containsin = {
+        type: "playlist",
+        songs: items,
+      };
+      return { artist: artist, song: song, containsIn: containsin };
+    });
+  }
   return (
     <div
       onMouseEnter={() => sethover(true)}
       onMouseLeave={() => sethover(false)}
       className=" flex justify-between items-center hover:bg-[gray] py-2 px-2 hover:bg-opacity-15 rounded-md cursor-pointer  "
-      //   onClick={handleclick}
+        onClick={handleclick}
     >
       <div className={`" flex items-center gap-3 w-full`}>
         <div className=" flex gap-3">

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { fetchsonginfo } from "../../components/helper";
+import { fetchsonginfo } from "../helper";
 import { Track, user } from "@/types/type";
 import Image from "next/image";
 import {
@@ -7,8 +7,8 @@ import {
   Subicon,
   Threedoticon,
   Videoplayicon,
-} from "../../components/icon";
-import { UserContext, musicplayercontext } from "../../components/context";
+} from "../icon";
+import { UserContext, musicplayercontext } from "../context";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { UseUserSongManagement, Usecurrentuser } from "@/components/custom";
