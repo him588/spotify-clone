@@ -4,7 +4,7 @@ import { Playicon } from "@/components/icon";
 import Song from "./song";
 import { musicplayercontext } from "@/components/context";
 
-function Topresult({ tracks }: { tracks: any }) {
+function Topresult({ tracks,increase }: { tracks: any,increase:boolean }) {
   // console.log({ tracks });
   const [show, setshow] = useState(false);
   const { setmusicplayer } = useContext(musicplayercontext);
@@ -37,8 +37,8 @@ function Topresult({ tracks }: { tracks: any }) {
   return (
     <>
       {tracks.items.length !== 0 ? (
-        <div className=" w-full h-[300px] flex gap-3">
-          <div className="  w-[50%] h-full flex flex-col gap-6 ">
+        <div className={`w-full h-[300px] flex gap-3 ${increase?"flex-col h-auto":"flex h-[300px]"}`}>
+          <div className={`"   h-full flex flex-col gap-6 ${increase?" w-[400px] h-[230px]":"w-[50%] h-full"} `}>
             <p className=" text-white text-[25px] font-bold">Top result</p>
             <div
               onMouseEnter={() => {
@@ -103,11 +103,11 @@ function Topresult({ tracks }: { tracks: any }) {
               </div>
             </div>
           </div>
-          <div className=" flex w-[50%] h-full flex-col gap-6">
+          <div className={`" flex w-[50%] h-full flex-col gap-6 ${increase?" w-full":" w-[50%]"}`}>
             <p className=" text-white text-[25px] font-semibold">Songs</p>
             <div>
               {newitems.map((item: any, index: number) => {
-                if (index < 4) {
+                if (index < (increase?10:4)) {
                   return <Song key={index} item={item} items={newitems} number={index} />;
                 } else {
                   return "";

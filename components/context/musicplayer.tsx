@@ -3,7 +3,7 @@ type context = {
   musicplayer: music | null;
   setmusicplayer: React.Dispatch<React.SetStateAction<music | null>>;
 };
-type music = {
+export type music = {
   artist: {
     name: string;
     artistid: string;

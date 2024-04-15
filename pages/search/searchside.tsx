@@ -51,14 +51,14 @@ function Searchside({ increase, token }: { increase: boolean; token: string }) {
         <div className="w-full px-3 -mt-1 flex flex-col gap-2">
           <div>
             {searchData !== null ? (
-              <Topresult tracks={searchData.tracks} />
+              <Topresult increase={increase} tracks={searchData.tracks} />
             ) : (
               ""
             )}
           </div>
           <div className=" mt-2">
             {searchData !== null ? (
-              <Playlistpart playlists={searchData.playlists} />
+              <Playlistpart playlists={searchData.playlists} increase={increase} />
             ) : (
               ""
             )}
