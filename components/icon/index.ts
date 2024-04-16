@@ -19,6 +19,8 @@ import VolumeIcon from "./volumeicon";
 import CrossIcon from "./crossicon";
 import Loveicon from "./loveicon";
 import Subicon from "./subicon";
+import Headicon from "./headphoneicon";
+import Uploadicon from "./uploadicon";
 export {
   Homeicon,
   Searchicon,
@@ -40,5 +42,5 @@ export {
   VolumeIcon,
   CrossIcon,
   Loveicon,
-  Subicon
+  Subicon,Headicon,Uploadicon
 };
