@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Playlist } from "@/types/type";
+// import { Playlist } from "@/types/type";
 import { Playicon } from "../icon";
 
-function  Card({ playlist }: { playlist: Playlist }) {
+function  Card({ playlist }: { playlist:any }) {
   const [show,setshow]=useState(false)
   return (
     <Link href={`/playlist/${playlist.id}`}>
