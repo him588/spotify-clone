@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { fetchsonginfo } from "../helper";
-import { Track, user } from "@/types/type";
 import Image from "next/image";
 import {
   Addtofavicon,
@@ -8,9 +6,8 @@ import {
   Threedoticon,
   Videoplayicon,
 } from "../icon";
-import { UserContext, musicplayercontext } from "../context";
+import {  musicplayercontext } from "../context";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 import { UseUserSongManagement, Usecurrentuser } from "@/components/custom";
 type props = {
   number: number;
@@ -98,8 +95,7 @@ function Songinplaylist({ number, increase, item, items }: props) {
               {item.artists.map((artist: any, index: number) => {
                 if (index < 2) {
                   return (
-                    <Link key={index} href={`/artist/${artist.id}`}>
-                      <p
+                      <p key={index}
                         className={` text-[14px] hover:underline hover:underline-offset-1 mr-1 hover:decoration-white ${
                           hover ? " text-white" : "text-[gray]"
                         }`}
@@ -107,7 +103,7 @@ function Songinplaylist({ number, increase, item, items }: props) {
                       >
                         {artist.name}
                       </p>
-                    </Link>
+                    
                   );
                 }
               })}

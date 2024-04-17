@@ -1,7 +1,7 @@
 import { Footer } from "@/components/core";
 import Songinplaylist from "../../components/core/songinplaylist";
 import Clockicon from "@/components/icon/clockicon";
-import React, { useEffect, useState } from "react";
+import React from "react";
 type props = {
   items: any;
   token: string;
