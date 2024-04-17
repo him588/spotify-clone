@@ -1,33 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { Loveicon } from '../icon'
-import { UserContext } from '../context'
-import { useSession } from 'next-auth/react'
 import { playlist, user } from '@/types/type'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Router } from 'next/router'
 import Link from 'next/link'
+import { Usecurrentuser } from '../custom'
 
-function Likedsection() {
-    const {users}=useContext(UserContext)||{}
-    const [currentuser,setcurrentuser]=useState<user|null>(null)
-    const {data:session}=useSession()
-    useEffect(()=>{
-        const email=session?.user?.email
-        setcurrentuser((prev)=>{
-            if(users&&email){
-                const index = users.findIndex(user => user.email === email);
-                if(index!==-1){
-                    const newuser=users[index]
-                    return newuser
-                }else{
-                    return prev
-                }
-            }
-            return prev
-        })
-    },[users,session])
-
+function Likedsection({search}:{search:string}) {
+    const {currentuser}=Usecurrentuser()||{}
+    const [playlist,setplaylist]=useState(currentuser?.playlist)
+    useEffect(()=>{setplaylist(()=>currentuser?.playlist)},[currentuser])
+useEffect(()=>{
+    setplaylist((prev)=>{
+        const newplay=currentuser?.playlist?.filter((play)=>(play.name.toLowerCase()).includes(search))
+        return newplay
+    })
+},[search,currentuser])
   return (
     <div>
      <Link href={"/likedsong"}>
@@ -41,8 +29,8 @@ function Likedsection() {
         </div>
     </div>
     </Link>
-    {currentuser&&currentuser.playlist&&(
-        currentuser.playlist.map((play)=><Playlist key={play.id} playlist={play}/>)
+    {playlist&&(
+        playlist.map((play)=><Playlist key={play.id} playlist={play}/>)
     )}
     </div>
   )

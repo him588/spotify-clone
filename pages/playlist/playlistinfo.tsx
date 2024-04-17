@@ -4,11 +4,12 @@ import { Header } from "@/components/core";
 import {
   Addtofavicon,
   MenuIcon,
+  Subicon,
   Threedoticon,
   Videoplayicon,
 } from "@/components/icon";
 import Playitem from "./playitem";
-import { UsePlaylistInfo } from "@/components/custom";
+import { UsePlaylistInfo, Usecurrentuser } from "@/components/custom";
 import { UsePlaylistManagement } from "@/components/custom/usemanageplaylist";
 import { playlist } from "@/types/type";
 
@@ -19,10 +20,19 @@ interface PlaylistinfoProps {
 }
 
 function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
-  const { playlistData, loading, error } = UsePlaylistInfo(token, id);
-  const {handleAddPlaylist}=UsePlaylistManagement()
-  // console.log({playlistData})
+  const { playlistData } = UsePlaylistInfo(token, id);
+  const {handleAddPlaylist,handleRemovePlaylist}=UsePlaylistManagement()
+  const {currentuser}=Usecurrentuser()
+  const [contains,setcontains]=useState(false)
   const colors = [["#ea7861", "#7b3f33"]];
+  useEffect(()=>{
+    setcontains(()=>{
+      const index=currentuser?.playlist.findIndex((play)=>play.id===id)
+      if(index!==-1){
+        return false
+      }else return true
+    })
+  },[currentuser,id])
   function getRandomColorPair() {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
@@ -109,9 +119,12 @@ function Playlistinfo({ token, increase, id }: PlaylistinfoProps) {
           <div className="h-[55px] w-[55px] rounded-full bg-[#1ed760] flex items-center justify-center cursor-pointer">
             <Videoplayicon w={45} h={45} c="black" />
           </div>
-          <div className="cursor-pointer" onClick={handleadd}>
+          {contains?<div className="cursor-pointer" onClick={handleadd} >
             <Addtofavicon h={35} w={35} c="#a7a7a7" />
-          </div>
+          </div>:<div className="cursor-pointer"onClick={()=>{ console.log("clicked"), handleRemovePlaylist(id)}} >
+            <Subicon h={35} w={35} c="#a7a7a7" />
+          </div>}
+          
           <div>
             <Threedoticon h={30} w={30} c="#a7a7a7" />
           </div>

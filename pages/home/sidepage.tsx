@@ -11,11 +11,11 @@ function Sidepage({ token, increase }: { token: string; increase: boolean }) {
       <div className="  relative w-full bg-gradient-to-b from-[#12181b]  to-[#121212]">
         <div className=" p-3  top-0 z-30 w-full">
           <Header />
-          <div className=" flex gap-2 py-4">
+          {/* <div className=" flex gap-2 py-4">
             <Button name="All" />
             <Button name="Music" />
             <Button name="Podcast" />
-          </div>
+          </div> */}
         </div>
         {/* <div className=" px-3 flex  flex-wrap  z-10 gap-3">
           <Recentlyplayed />

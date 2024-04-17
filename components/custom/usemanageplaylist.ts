@@ -116,11 +116,10 @@ export function UsePlaylistManagement() {
                     if (newPlaylists.length !== currentUser.playlist.length) {
                         const newUser = {
                             ...currentUser,
-                            playlists: newPlaylists
+                            playlist: newPlaylists
                         };
                         const newUsers = [...prevs.slice(0, index), newUser, ...prevs.slice(index + 1)];
-                        console.log("Removing playlist:", newUsers);
-                        localStorage.setItem("users", JSON.stringify(newUsers));
+                            localStorage.setItem("users", JSON.stringify(newUsers));
                         return newUsers;
                     } else {
                         alert("Playlist not found");

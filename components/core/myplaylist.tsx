@@ -21,7 +21,7 @@ function Myplaylist({ Increase, setIncrease }: prop) {
   const [showmenu, setshowmenu] = useState(false);
   const [showplaylist, setshowplaylist] = useState(false);
   const [sortvalue, setsortvalue] = useState<string>();
-  const [search, setsearch] = useState<string>();
+  const [search, setsearch] = useState<string>("");
   const [showsearch, setshowsearch] = useState(false);
   const [sortby, setsortby] = useState<sorted>({
     Recents: true,
@@ -56,21 +56,6 @@ function Myplaylist({ Increase, setIncrease }: prop) {
           </p>
         </div>
         <div className=" flex items-center gap-2">
-          <div className=" relative">
-            <div
-              onClick={() => setshowplaylist((prev) => !prev)}
-              className=" p-1 cursor-pointer  rounded-full hover:bg-gray-400 hover:bg-clip-padding hover:backdrop-filter hover:bg-opacity-5"
-            >
-              <Addicon h={30} w={30} c="#a7a7a7" />
-            </div>
-            {showplaylist ? (
-              <div className=" h-[45px] w-[180px] ml-2 bg-[#282828] absolute rounded-sm z-20">
-                <Addplaylist setshowplaylist={setshowplaylist} />
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
           <div
             onClick={() => setIncrease((prev) => !prev)}
             className={`"p-1 cursor-pointer  rounded-full hover:bg-gray-400 hover:bg-clip-padding hover:backdrop-filter hover:bg-opacity-5 transition-all duration-150 ${
@@ -157,7 +142,7 @@ function Myplaylist({ Increase, setIncrease }: prop) {
         </div>
       </div>
       <div className="  w-full overflow-scroll scrollbar-hide">
-        <Likedsection/>
+        <Likedsection search={search}/>
       </div>
     </div>
   );

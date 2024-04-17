@@ -2,8 +2,10 @@ import { Button } from "@/components/core";
 import BellIcon from "@/components/icon/bellicon";
 import LeftIcon from "@/components/icon/lefticon";
 import React from "react";
+import { Usecurrentuser } from "../custom";
 
 function Header() {
+  const {currentuser}=Usecurrentuser()
   return (
     <div className="h-[10vh] w-full flex flex-col gap-6  ">
       <div className=" flex justify-between">
@@ -20,7 +22,7 @@ function Header() {
             <BellIcon h={20} w={20} c="white" />
           </div>
           <div className=" flex  h-[32px] w-[32px] rounded-full items-center justify-center bg-[#b49bc8] text-[#2d2732] font-semibold text-[20px] cursor-pointer">
-            H
+            {currentuser?.name.slice(0,1)}
           </div>
         </div>
       </div>

@@ -32,7 +32,6 @@ function Songinplaylist({ number, increase, item, items }: props) {
       }else return true
     })
   },[item,currentuser])
-  console.log(currentuser)
 
   function handleclick() {
     setmusicplayer(() => {
