@@ -1,9 +1,8 @@
-import { Homeicon, Searchicon } from "@/components/icon";
 import Myplaylist from "../../components/core/myplaylist";
-import { useContext, useEffect, useState } from "react";
+import { useContext,  useState } from "react";
 import { musicplayercontext } from "@/components/context";
 import { Musicplayer, Topnav } from "@/components/core";
-import Sidepage from "./sidepage";
+import { Sidepage } from "@/components/pages/likedsong";
 export default function Liked() {
   const [Increase, setIncrease] = useState(false);
   const { musicplayer } = useContext(musicplayercontext);

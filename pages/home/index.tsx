@@ -1,6 +1,6 @@
 import Myplaylist from "../../components/core/myplaylist";
 import { useContext, useEffect, useState } from "react";
-import Sidepage from "./sidepage";
+import { Sidepage } from "@/components/pages/home";
 import { useSession } from "next-auth/react";
 import { Musicplayer, Topnav } from "@/components/core";
 import { UserContext, musicplayercontext } from "@/components/context";

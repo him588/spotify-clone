@@ -1,11 +1,11 @@
 import { Homeicon, Searchicon } from "@/components/icon";
 import Myplaylist from "../../components/core/myplaylist";
 import { useContext, useEffect, useState } from "react";
-import Sidepage from "./sidepage";
+import Sidepage from "../../components/pages/search/sidepage";
 import { useSession } from "next-auth/react";
 import { Musicplayer, Topnav } from "@/components/core";
 import { musicplayercontext } from "@/components/context";
-import Searchside from "./searchside";
+import Searchside from "../../components/pages/search/searchside";
 import { Router } from "next/router";
 export default function Search() {
   const [Increase, setIncrease] = useState(false);

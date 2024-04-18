@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/core/header";
+import Header from "../../core/header";
 import { Footer } from "@/components/core";
 import { CrossIcon } from "@/components/icon";
 import { useRouter } from "next/router";

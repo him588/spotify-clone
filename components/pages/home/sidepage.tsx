@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/core/header";
+import Header from "../../core/header";
 import { Footer } from "@/components/core";
 import Recentlyplayed from "@/components/core/recentlyplayed";
 import Block from "./block";

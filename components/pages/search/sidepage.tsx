@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../../components/core/header";
+import Header from "../../core/header";
 import { Footer } from "@/components/core";
 import Box from "./box";
 import { CrossIcon, Searchicon } from "@/components/icon";

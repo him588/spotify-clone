@@ -3,7 +3,7 @@ import Myplaylist from "../../components/core/myplaylist";
 import { useContext, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Playlistinfo from "./playlistinfo";
+import Playlistinfo from "../../components/pages/playlist/playlistinfo";
 import { musicplayercontext } from "@/components/context";
 import { Musicplayer, Topnav } from "@/components/core";
 export default function Home() {
