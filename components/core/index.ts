@@ -9,6 +9,7 @@ import Addplaylist from "./addplaylist";
 import Musicplayer from "./musicplayer";
 // import { Homeicon } from "../icon";
 import Topnav from "./topnav";
+import Songinplaylist from "./songinplaylist";
 export {
   Button,
   Card,
@@ -19,5 +20,5 @@ export {
   Sortbybox,
   Addplaylist,
   Musicplayer,
-  Topnav,
+  Topnav,Songinplaylist
 };
